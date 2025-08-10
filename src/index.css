@@ -2,41 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Modern Fitness & Health Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Modern Health Theme Colors */
+    --background: 120 20% 98%;
+    --foreground: 120 10% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 120 10% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 120 10% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Vibrant Health Green Primary */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 142 76% 50%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Soft Mint Secondary */
+    --secondary: 160 30% 95%;
+    --secondary-foreground: 120 10% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Subtle Gray Muted */
+    --muted: 120 10% 96%;
+    --muted-foreground: 120 8% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Fresh Accent */
+    --accent: 180 100% 85%;
+    --accent-foreground: 120 10% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Health Warning Red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Success Green */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    /* Nutrition Orange */
+    --nutrition: 35 91% 55%;
+    --nutrition-foreground: 0 0% 100%;
+
+    /* Professional borders */
+    --border: 120 20% 88%;
+    --input: 120 20% 94%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.75rem;
+
+    /* Beautiful Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-health: linear-gradient(135deg, hsl(142 76% 36%), hsl(35 91% 55%));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(120 15% 96%));
+    
+    /* Professional Shadows */
+    --shadow-soft: 0 4px 12px -4px hsl(120 20% 20% / 0.08);
+    --shadow-medium: 0 8px 25px -8px hsl(120 20% 20% / 0.12);
+    --shadow-strong: 0 16px 40px -12px hsl(120 20% 20% / 0.18);
+    
+    /* Smooth Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +128,69 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-cairo;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Arabic RTL Support */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  /* Professional Scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+    transition: var(--transition-smooth);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.6);
+  }
+
+  /* Beautiful Focus Rings */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  /* Nutrition Table Animations */
+  .nutrition-table-row {
+    @apply transition-all duration-300 ease-in-out hover:bg-accent/50;
+  }
+
+  .nutrition-table-row:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Add Food Button Styles */
+  .add-food-btn {
+    background: var(--gradient-primary);
+    transition: var(--transition-bounce);
+  }
+
+  .add-food-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  /* Totals Card Animation */
+  .totals-card {
+    transition: var(--transition-smooth);
+  }
+
+  .totals-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-strong);
   }
 }
