@@ -152,7 +152,7 @@ const NutritionPlan: React.FC = () => {
               <SelectTrigger className="flex-1 bg-background border-border focus-ring">
                 <SelectValue placeholder="اختر طعاماً لإضافته..." />
               </SelectTrigger>
-              <SelectContent className="bg-popover border-border shadow-medium max-h-60">
+              <SelectContent className="z-50 bg-popover text-popover-foreground border-border shadow-medium max-h-60 overflow-y-auto">
                 {FOODS_DATABASE.map((food) => (
                   <SelectItem 
                     key={food.id} 
